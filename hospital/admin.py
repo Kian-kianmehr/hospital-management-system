@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Shift, Service
+from .models import Shift, Service, SymptomCheck
 
 
 @admin.register(Shift)
@@ -65,4 +65,28 @@ class ServiceAdmin(admin.ModelAdmin):
 
     list_filter = (
         "specialization",
+    )
+
+
+
+
+@admin.register(SymptomCheck)
+class SymptomCheckAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "patient",
+        "suggested_specialization",
+        "severity",
+        "created_at",
+    )
+
+    list_filter = (
+        "severity",
+        "created_at",
+    )
+
+    search_fields = (
+        "patient__user__username",
+        "symptoms",
+        "suggested_specialization",
     )
