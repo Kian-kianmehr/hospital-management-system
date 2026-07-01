@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import User, DoctorProfile, NurseProfile
+from .models import User, DoctorProfile, NurseProfile, PatientProfile
 
 
 @admin.register(User)
@@ -120,4 +120,38 @@ class NurseProfileAdmin(admin.ModelAdmin):
 
     search_fields = (
         "user__username",
+    )
+
+
+@admin.register(PatientProfile)
+class PatientProfileAdmin(admin.ModelAdmin):
+
+    fieldsets = (
+        ("Patient Information", {
+            "fields": (
+                "user",
+                "date_of_birth",
+                "gender",
+                "phone_number",
+                "address",
+            )
+        }),
+
+        ("Medical Information", {
+            "fields": (
+                "chronic_disease_description",
+            )
+        }),
+    )
+
+    list_display = (
+        "user",
+        "gender",
+        "phone_number",
+        "date_of_birth",
+    )
+
+    search_fields = (
+        "user__username",
+        "phone_number",
     )
