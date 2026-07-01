@@ -29,9 +29,19 @@ class User(AbstractUser):
 
 class DoctorProfile(models.Model):
 
-    class DoctorType(models.TextChoices):
-        GP = "GP", "GP"
-        SPECIALIST = "SPECIALIST", "Specialist"
+    class Specialization(models.TextChoices):
+        GP = "GP", "General Practitioner"
+        DENTIST = "DENTIST", "Dentist"
+        ORTHOPEDIC = "ORTHOPEDIC", "Orthopedic"
+        CARDIOLOGY = "CARDIOLOGY", "Cardiology"
+        DERMATOLOGY = "DERMATOLOGY", "Dermatology"
+        NEUROLOGY = "NEUROLOGY", "Neurology"
+        PEDIATRICS = "PEDIATRICS", "Pediatrics"
+        GYNECOLOGY = "GYNECOLOGY", "Gynecology"
+        OPHTHALMOLOGY = "OPHTHALMOLOGY", "Ophthalmology"
+        ENT = "ENT", "ENT"
+        PSYCHIATRY = "PSYCHIATRY", "Psychiatry"
+
 
     user = models.OneToOneField(
         settings.AUTH_USER_MODEL,
@@ -39,21 +49,19 @@ class DoctorProfile(models.Model):
         related_name="doctor_profile"
     )
 
-    doctor_type = models.CharField(
-        max_length=20,
-        choices=DoctorType.choices
-    )
-
     specialization = models.CharField(
-        max_length=100,
-        blank=True,
-        null=True
+        max_length=30,
+        choices=Specialization.choices
     )
 
     medical_license_number = models.CharField(
-        max_length=50,
+        max_length=100,
         unique=True
     )
+
+
+    def __str__(self):
+        return f"{self.user.username} - {self.specialization}"
 
 
 class NurseProfile(models.Model):

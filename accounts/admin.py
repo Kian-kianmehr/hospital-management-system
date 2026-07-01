@@ -70,7 +70,6 @@ class DoctorProfileAdmin(admin.ModelAdmin):
         ("Doctor Information", {
             "fields": (
                 "user",
-                "doctor_type",
                 "specialization",
             )
         }),
@@ -84,7 +83,6 @@ class DoctorProfileAdmin(admin.ModelAdmin):
 
     list_display = (
         "user",
-        "doctor_type",
         "specialization",
         "medical_license_number",
     )
@@ -94,6 +92,9 @@ class DoctorProfileAdmin(admin.ModelAdmin):
         "medical_license_number",
     )
 
+    list_filter = (
+        "specialization",
+    )
 
 @admin.register(NurseProfile)
 class NurseProfileAdmin(admin.ModelAdmin):
