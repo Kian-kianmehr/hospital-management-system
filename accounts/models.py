@@ -43,6 +43,12 @@ class DoctorProfile(models.Model):
         choices=DoctorType.choices
     )
 
+
+    shift = models.CharField(
+        max_length=50,
+        blank=True,
+        null=True   
+    )
     specialization = models.CharField(
         max_length=100,
         blank=True,
@@ -57,3 +63,26 @@ class DoctorProfile(models.Model):
     department = models.CharField(
         max_length=100
     )
+
+class NurseProfile(models.Model):
+
+    user = models.OneToOneField(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="nurse_profile"
+    )
+
+    department = models.CharField(
+        max_length=100
+    )
+
+    shift = models.CharField(
+        max_length=50
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    def __str__(self):
+        return self.user.get_full_name()
