@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Shift
+from .models import Shift, Service
 
 
 @admin.register(Shift)
@@ -36,4 +36,33 @@ class ShiftAdmin(admin.ModelAdmin):
         "department",
         "status",
         "date",
+    )
+
+
+@admin.register(Service)
+class ServiceAdmin(admin.ModelAdmin):
+
+    fieldsets = (
+        ("Service Information", {
+            "fields": (
+                "name",
+                "specialization",
+                "duration",
+                "description",
+            )
+        }),
+    )
+
+    list_display = (
+        "name",
+        "specialization",
+        "duration",
+    )
+
+    search_fields = (
+        "name",
+    )
+
+    list_filter = (
+        "specialization",
     )

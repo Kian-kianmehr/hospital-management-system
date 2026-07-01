@@ -1,6 +1,6 @@
 from django.conf import settings
 from django.db import models
-
+from accounts.models import DoctorProfile
 
 class Shift(models.Model):
 
@@ -37,3 +37,27 @@ class Shift(models.Model):
 
     def __str__(self):
         return f"{self.user.get_full_name()} - {self.department} - {self.date}"
+
+
+class Service(models.Model):
+
+    specialization = models.CharField(
+        max_length=30,
+        choices=DoctorProfile.Specialization.choices
+    )
+
+    name = models.CharField(
+        max_length=100
+    )
+
+    duration = models.PositiveIntegerField(
+        help_text="Duration in minutes"
+    )
+
+    description = models.TextField(
+        blank=True
+    )
+
+
+    def __str__(self):
+        return self.name
