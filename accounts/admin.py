@@ -72,14 +72,12 @@ class DoctorProfileAdmin(admin.ModelAdmin):
                 "user",
                 "doctor_type",
                 "specialization",
-                "shift",
             )
         }),
 
         ("Professional Information", {
             "fields": (
                 "medical_license_number",
-                "department",
             )
         }),
     )
@@ -88,8 +86,6 @@ class DoctorProfileAdmin(admin.ModelAdmin):
         "user",
         "doctor_type",
         "specialization",
-        "department",
-        "shift",
         "medical_license_number",
     )
 
@@ -106,16 +102,12 @@ class NurseProfileAdmin(admin.ModelAdmin):
         ("Nurse Information", {
             "fields": (
                 "user",
-                "department",
-                "shift",
             )
         }),
     )
 
     list_display = (
         "user",
-        "department",
-        "shift",
     )
 
     search_fields = (
@@ -163,7 +155,6 @@ class ReceptionProfileAdmin(admin.ModelAdmin):
         ("Reception Information", {
             "fields": (
                 "user",
-                "department",
                 "phone_number",
             )
         }),
@@ -171,7 +162,6 @@ class ReceptionProfileAdmin(admin.ModelAdmin):
 
     list_display = (
         "user",
-        "department",
         "phone_number",
     )
 

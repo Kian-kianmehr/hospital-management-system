@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # my apps:
     "accounts.apps.AccountsConfig",
     "rest_framework",
+    "hospital.apps.HospitalConfig"
 ]
 
 MIDDLEWARE = [

@@ -8,8 +8,9 @@ class User(AbstractUser):
         ADMIN = "ADMIN", "Admin"
         DOCTOR = "DOCTOR", "Doctor"
         NURSE = "NURSE", "Nurse"
-        RECEPTION = "RECEPTION", "Reception"
         PATIENT = "PATIENT", "Patient"
+        RECEPTION = "RECEPTION", "Reception"
+        MANAGER = "MANAGER", "Manager"
     role = models.CharField(
         max_length=20,
         choices=Role.choices,
@@ -43,12 +44,6 @@ class DoctorProfile(models.Model):
         choices=DoctorType.choices
     )
 
-
-    shift = models.CharField(
-        max_length=50,
-        blank=True,
-        null=True   
-    )
     specialization = models.CharField(
         max_length=100,
         blank=True,
@@ -60,9 +55,6 @@ class DoctorProfile(models.Model):
         unique=True
     )
 
-    department = models.CharField(
-        max_length=100
-    )
 
 class NurseProfile(models.Model):
 
@@ -70,14 +62,6 @@ class NurseProfile(models.Model):
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
         related_name="nurse_profile"
-    )
-
-    department = models.CharField(
-        max_length=100
-    )
-
-    shift = models.CharField(
-        max_length=50
     )
 
     created_at = models.DateTimeField(
