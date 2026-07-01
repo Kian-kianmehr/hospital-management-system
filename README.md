@@ -33,6 +33,7 @@ The goal is to build a scalable system including:
 ✅ PostgreSQL database integration
 ✅ Environment variables configuration
 ✅ Custom User Model
+
 ✅ Role system:
 
 * Admin
@@ -42,6 +43,18 @@ The goal is to build a scalable system including:
 * Patient
 
 ✅ Django Admin customization
+
+✅ Doctor profile management
+
+* Doctor type (GP / Specialist)
+* Medical license number
+* Department
+* Shift management
+
+✅ Nurse profile management
+
+* Department
+* Shift information
 
 ## Setup
 
