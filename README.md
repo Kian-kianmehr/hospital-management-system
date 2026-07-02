@@ -1,248 +1,169 @@
 # 🏥 Hospital Management System
 
-A scalable and professional Hospital & Clinic Management System built with **Django** and **PostgreSQL**.
+A scalable and production-oriented Hospital Management System built with **Django** and **PostgreSQL**.
 
-This project is designed to simulate a real-world healthcare management platform while following clean architecture and scalable software engineering principles.
-
----
-
-# 🚀 About The Project
-
-The goal of this project is to build a complete healthcare management system that can be used in hospitals and clinics.
-
-The project focuses on:
-
-- Clean Architecture
-- Scalable Database Design
-- Role-Based Access Control (RBAC)
-- REST API Development
-- AI-assisted Healthcare Features (Upcoming)
+The goal of this project is to simulate real-world hospital workflows while following clean architecture and backend best practices.
 
 ---
 
-# ✨ Current Features
+# ✨ Features
 
 ## Authentication & User Management
 
-- ✅ Custom User Model
-- ✅ Environment Variables (.env)
-- ✅ PostgreSQL Integration
-- ✅ Role-Based Access Control
-
-Supported Roles:
-
-- Manager
-- Doctor
-- Nurse
-- Receptionist
-- Patient
+* Custom User Model
+* Role-Based Access Control
+* Admin
+* Doctor
+* Nurse
+* Receptionist
+* Patient
 
 ---
 
 ## Doctor Management
 
-- ✅ Doctor Profile
-- ✅ Medical License Number
-- ✅ Medical Specialization
-- ✅ Django Admin Customization
+* Doctor Profiles
+* Doctor Types
 
-Supported Specializations include:
-
-- General Practitioner (GP)
-- Dentist
-- Orthopedic
-- Cardiology
-- Dermatology
-- Neurology
-- Pediatrics
-- Gynecology
-- Ophthalmology
-- ENT
-- Psychiatry
-
----
-
-## Nurse Management
-
-- ✅ Nurse Profile
-- ✅ Phone Number
-- ✅ Django Admin Customization
+  * General Practitioner (GP)
+  * Specialist
+* Medical License Number
+* Medical Specialization
 
 ---
 
 ## Patient Management
 
-- ✅ Patient Profile
-- ✅ Date of Birth
-- ✅ Gender
-- ✅ Blood Group
-- ✅ Emergency Contact
-- ✅ Underlying Disease Information
-- ✅ Patient Priority Level (Triage Ready)
-
-Priority Levels:
-
-- Low
-- Medium
-- High
-- Emergency
+* Patient Profiles
+* Blood Group
+* Emergency Contact
+* Medical Information
 
 ---
 
-## Shift Management
+## Hospital Workflow
 
-- ✅ Shift Model
-- ✅ Doctor Shift
-- ✅ Nurse Shift
-- ✅ Department-based Shifts
-- ✅ Shift Status
-- ✅ Shift Start Time
-- ✅ Shift End Time
+Patients follow a real hospital workflow:
 
----
+```
+Registration
 
-## Medical Services
+↓
 
-- ✅ Service Management
-- ✅ Service Duration
-- ✅ Service Description
-- ✅ Service Categorized by Medical Specialization
+Patient Profile
 
----
+↓
 
-## Django Admin
+Describe Medical Problem
 
-Customized Admin Panels for:
+↓
 
-- Users
-- Doctors
-- Nurses
-- Patients
-- Receptionists
-- Shifts
-- Services
+Reception Review
 
----
+↓
 
-# 🚧 Upcoming Features
+Choose Required Specialization
 
-## Appointment System
+↓
 
-- Appointment Booking
-- Smart Scheduling
-- Conflict Detection
-- Doctor Availability
+Appointment Booking
+
+↓
+
+Doctor Visit
+
+↓
+
+Prescription / Referral / Procedure
+
+↓
+
+Follow-up Appointment (if required)
+```
+
+The system is designed to reflect how clinics and hospitals commonly operate.
 
 ---
 
-## Medical Records
+# 🚧 Planned Features
 
-- Patient Medical History
-- Diagnosis
-- Treatment Plan
-- Visit History
-
----
-
-## Prescription System
-
-- Medication
-- Dosage
-- Duration
-- Notes
-
----
-
-## AI Features (Planned)
-
-- 🤖 AI Symptom Analyzer
-- 🤖 Medical Specialization Recommendation
-- 🤖 Smart Appointment Recommendation
-- 🤖 Intelligent Patient Triage Assistance
-
----
-
-## Notifications
-
-- Shift Reminder
-- Appointment Reminder
-- Email Notifications
-- SMS Notifications
-
----
-
-## Dashboard
-
-- Hospital Statistics
-- Doctor Analytics
-- Patient Analytics
-- Appointment Reports
+* Reception Dashboard
+* Appointment Management
+* Doctor Shift Management
+* Visit Reports
+* Medical Prescriptions
+* Patient Referrals
+* Medical Procedures
+* Notification System
+* Email Reminders
+* REST API
+* JWT Authentication
+* Swagger Documentation
+* Docker Deployment
+* Redis
+* Celery Background Tasks
 
 ---
 
 # 🛠 Tech Stack
 
-Backend
-
-- Python
-- Django
-- Django REST Framework
-
-Database
-
-- PostgreSQL
-
-Authentication
-
-- JWT Authentication
-
-Documentation
-
-- Swagger / OpenAPI
-
-Background Tasks *(Planned)*
-
-- Celery
-- Redis
-
-Deployment *(Planned)*
-
-- Docker
+* Python
+* Django
+* Django REST Framework
+* PostgreSQL
+* Redis
+* Celery
+* Docker
+* JWT
+* Swagger / OpenAPI
 
 ---
 
 # 📂 Project Structure
 
 ```
-hospital-management-system/
+hospital-management/
 
-accounts/
-hospital/
-
-config/
-
-manage.py
-requirements.txt
-README.md
+├── accounts/
+│   ├── models.py
+│   ├── admin.py
+│   └── ...
+│
+├── hospital/
+│   ├── models.py
+│   ├── admin.py
+│   └── ...
+│
+├── config/
+│
+├── manage.py
+│
+└── requirements.txt
 ```
 
 ---
 
-# ⚙️ Installation
+# 🚀 Installation
 
-Clone repository
+Clone the repository
 
 ```bash
 git clone https://github.com/Kian-kianmehr/hospital-management-system.git
 ```
 
-Create virtual environment
+Move into the project
+
+```bash
+cd hospital-management-system
+```
+
+Create a virtual environment
 
 ```bash
 python -m venv venv
 ```
 
-Activate virtual environment
+Activate it
 
 Windows
 
@@ -262,11 +183,7 @@ Install dependencies
 pip install -r requirements.txt
 ```
 
----
-
-# 🔐 Environment Variables
-
-Create a `.env` file:
+Create a `.env` file
 
 ```env
 DB_NAME=hospital_db
@@ -274,28 +191,22 @@ DB_USER=postgres
 DB_PASSWORD=your_password
 DB_HOST=localhost
 DB_PORT=5432
-
-SECRET_KEY=your_secret_key
-DEBUG=True
 ```
 
----
-
-# ▶️ Run Project
-
-Apply migrations
+Run migrations
 
 ```bash
+python manage.py makemigrations
 python manage.py migrate
 ```
 
-Create superuser
+Create an admin account
 
 ```bash
 python manage.py createsuperuser
 ```
 
-Run development server
+Run the server
 
 ```bash
 python manage.py runserver
@@ -303,41 +214,33 @@ python manage.py runserver
 
 ---
 
-# 🗺 Roadmap
+# 📈 Development Status
 
-- ✅ Authentication System
-- ✅ Role Management
-- ✅ Doctor Management
-- ✅ Nurse Management
-- ✅ Patient Management
-- ✅ Shift Management
-- ✅ Medical Services
+Current Progress
 
-### Next Milestones
+* ✅ PostgreSQL Configuration
+* ✅ Environment Variables
+* ✅ Custom User Model
+* ✅ Role System
+* ✅ Django Admin Customization
+* ✅ Doctor Profiles
+* ✅ Patient Profiles
+* ✅ Medical Specializations
+* 🚧 Hospital Workflow
+* 🚧 Appointment System
+* 🚧 Shift Management
+* 🚧 REST API
 
-- 🔜 Appointment System
-- 🔜 Medical Records
-- 🔜 Prescription System
-- 🔜 AI Assistant
-- 🔜 REST API
-- 🔜 Docker Deployment
+---
+
+# 🎯 Project Goal
+
+This project focuses on building a maintainable backend architecture for hospital management.
+
+Instead of trying to replace medical professionals, the system models the real operational workflow inside a healthcare organization, including patient registration, reception review, appointment scheduling, doctor visits, referrals, prescriptions, and follow-up care.
 
 ---
 
 # 👨‍💻 Author
 
 **Kian Kianmehr**
-
-Backend Developer | Python & Django Developer
-
-GitHub:
-
-https://github.com/Kian-kianmehr
-
----
-
-# ⭐ Project Status
-
-🚧 **Currently under active development**
-
-The project is continuously being improved with new healthcare modules and AI-powered features.
