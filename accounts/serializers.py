@@ -1,5 +1,6 @@
 from django.contrib.auth.password_validation import validate_password
 from rest_framework import serializers
+from django.contrib.auth import authenticate
 
 from .models import (
     User,
@@ -69,3 +70,42 @@ class RegisterSerializer(serializers.ModelSerializer):
         )
 
         return user
+    
+
+class PatientProfileSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = PatientProfile
+
+        fields = (
+            "date_of_birth",
+            "gender",
+            "phone_number",
+            "address",
+            "chronic_disease_description",
+        )
+    
+
+class LoginSerializer(serializers.Serializer):
+
+    username = serializers.CharField()
+
+    password = serializers.CharField(
+        write_only=True
+    )
+
+    def validate(self, attrs):
+
+        user = authenticate(
+            username=attrs["username"],
+            password=attrs["password"],
+        )
+
+        if user is None:
+            raise serializers.ValidationError(
+                "Invalid username or password."
+            )
+
+        attrs["user"] = user
+
+        return attrs
